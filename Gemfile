@@ -21,3 +21,7 @@ end
 group :development do
   gem 'rubocop-rails', require: false
 end
+
+group :test do
+  gem 'test-prof'
+end
