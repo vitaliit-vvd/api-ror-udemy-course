@@ -8,6 +8,7 @@ ruby '3.0.3'
 gem 'active_model_serializers'
 gem 'bootsnap', require: false
 gem 'factory_bot_rails'
+gem 'kaminari'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.1'
