@@ -12,12 +12,3 @@ Style/Documentation:
 
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
-
-Metrics/AbcSize:
-  Exclude:
-    - 'app/lib/user_authenticator.rb'
-
-Metrics/MethodLength:
-  Exclude:
-    - 'app/lib/user_authenticator.rb'
-    -
