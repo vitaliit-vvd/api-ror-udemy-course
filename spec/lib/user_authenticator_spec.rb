@@ -12,15 +12,11 @@ describe UserAuthenticator do
       end
 
       before do
-        allow_any_instance_of(Octokit::Client).to receive(
-          :exchange_code_for_token
-        ).and_return(error)
+        allow_any_instance_of(Octokit::Client).to receive(:exchange_code_for_token).and_return(error)
       end
 
       it 'should raise an error' do
-        expect { subject }.to raise_error(
-          UserAuthenticator::AuthenticationError
-        )
+        expect { subject }.to raise_error(UserAuthenticator::AuthenticationError)
         expect(authenticator.user).to be_nil
       end
     end
@@ -36,13 +32,8 @@ describe UserAuthenticator do
       end
 
       before do
-        allow_any_instance_of(Octokit::Client).to receive(
-          :exchange_code_for_token
-        ).and_return('validaccesstoken')
-
-        allow_any_instance_of(Octokit::Client).to receive(
-          :user
-        ).and_return(user_data)
+        allow_any_instance_of(Octokit::Client).to receive(:exchange_code_for_token).and_return('validaccesstoken')
+        allow_any_instance_of(Octokit::Client).to receive(:user).and_return(user_data)
       end
 
       it 'should save the user when does not exists' do
