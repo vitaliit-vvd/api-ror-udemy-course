@@ -2,12 +2,11 @@
 
 class CommentsController < ApplicationController
   skip_before_action :authorize!, only: :index
-  before_action :load_article, only: :create
+  before_action :load_article
 
   def index
-    @comments = Comment.all
-
-    render json: @comments
+    comments = @article.comments.page(params[:page]).per(params[:per_page])
+    render json: comments
   end
 
   def create
