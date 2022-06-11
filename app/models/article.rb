@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
-  validates :title, :content, :slug, presence: true
-  validates :slug, uniqueness: true
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :slug, presence: true, uniqueness: true
 
   belongs_to :user
   has_many :comments, dependent: :destroy

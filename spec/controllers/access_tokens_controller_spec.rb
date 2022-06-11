@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+
 RSpec.describe AccessTokensController, type: :controller do
   describe 'POST #create' do
     let(:params) do
@@ -93,7 +95,7 @@ RSpec.describe AccessTokensController, type: :controller do
       end
 
       it 'should return proper json body' do
-        expect{ subject }.to change{ User.count }.by(1)
+        expect { subject }.to change { User.count }.by(1)
         user = User.find_by(login: 'jsmith1')
         expect(json_data['attributes']).to eq(
           { 'token' => user.access_token.token }
@@ -128,7 +130,7 @@ RSpec.describe AccessTokensController, type: :controller do
       end
 
       it 'should remove the proper access token' do
-        expect{ subject }.to change{ AccessToken.count }.by(-1)
+        expect { subject }.to change { AccessToken.count }.by(-1)
       end
     end
   end

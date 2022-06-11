@@ -4,13 +4,13 @@ class ArticlesController < ApplicationController
   skip_before_action :authorize!, only: %i[index show]
 
   def index
-    articles = Article.recent
-                      .page(params[:page])
-                      .per(params[:per_page])
+    articles = Article.recent.page(params[:page]).per(params[:per_page])
     render json: articles
   end
 
-  def show; end
+  def show
+    render json: Article.find(params[:id])
+  end
 
   def create
     article = current_user.articles.build(article_params)
@@ -45,6 +45,8 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:data).require(:attributes).permit(:title, :content, :slug) || ActionController::Parameters.new
+    params.require(:data).require(:attributes).
+      permit(:title, :content, :slug) ||
+      ActionController::Parameters.new
   end
 end
