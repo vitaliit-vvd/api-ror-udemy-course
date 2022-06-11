@@ -11,9 +11,9 @@ describe UserAuthenticator::Standard do
       before { user }
 
       it 'should raise an error' do
-        expect{ subject }.to raise_error(
-                               UserAuthenticator::Standard::AuthenticationError
-                             )
+        expect { subject }.to raise_error(
+          UserAuthenticator::Standard::AuthenticationError
+        )
         expect(authenticator.user).to be_nil
       end
     end
@@ -29,7 +29,6 @@ describe UserAuthenticator::Standard do
     end
 
     context 'when successed auth' do
-
     end
   end
 end

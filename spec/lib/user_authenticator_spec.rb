@@ -25,6 +25,5 @@ describe UserAuthenticator do
         authenticator
       end
     end
-
   end
 end
