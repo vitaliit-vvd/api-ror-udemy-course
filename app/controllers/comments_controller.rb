@@ -6,8 +6,8 @@ class CommentsController < ApplicationController
 
   def index
     comments = @article.comments
-                       .page(params[:page])
-                       .per(params[:per_page])
+                       .page(current_page)
+                       .per(per_page)
     render json: comments
   end
 
